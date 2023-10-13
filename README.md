@@ -4,8 +4,10 @@ Can people infer the truth from false messages when they know the sender's goal 
 
 ## Exp/
 "marble-flip-2" on server
+
 Goal conditions = {overestimate, underestimate}; Cost function conditions = {linear, quadratic}
-Fixed error from 1st version of experiment -- instructions always saying "But you don't gain any points if your opponent guesses XX or below" regardless of over vs underestimate condition. 
+Fixed error from 1st version of experiment -- initial instructions always saying "But you don't gain any points if your opponent guesses 45 or below" regardless of over vs underestimate condition. 
+
 Time delay between trials is also stated to be a server issue, not the participant making a decision.
 
 
