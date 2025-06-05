@@ -13,15 +13,16 @@ This repository contains a complete replication of Oey & Vul (2024), including b
 - **Title**: Inferring the Truth from Lies: Strategic Deception and Truth Inference in Communication
 - **Authors**: Lauren Oey, Edward Vul
 - **Journal**: Computational Brain & Behavior (2024)
-- **DOI**: [10.1007/s42113-023-00190-y](https://doi.org/10.1007/s42113-023-00190-y)
+- **DOI**: [10.1007/s42113-024-00190-y](https://doi.org/10.1007/s42113-024-00190-y)
 
 ## Replication Structure
 
 ### Part 1: Human Experiment Analysis
 Replicates the empirical findings from the marble communication game:
 - **Figure 2**: Bias distributions showing strategic lying and correction
+- **Truth recovery analysis**: Scatter plots showing judge accuracy
+- **Individual correlation analysis**: Key negative correlation finding
 - **Statistical validation**: All significance tests and effect sizes
-- **Key finding**: Strong negative correlation (r ≈ -0.71) between sender and judge biases
 
 ### Part 2: Computational Simulations  
 Independent implementation of the theoretical agent-based models:
@@ -38,28 +39,38 @@ Independent implementation of the theoretical agent-based models:
 - `computational_simulations.py` - Agent-based modeling framework
 - `run_complete_replication.py` - Master script running full replication
 
-### Data
-- `Exp/analysis/sender.csv` - Sender behavior data
-- `Exp/analysis/receiver.csv` - Receiver/judge behavior data
+### Data Files
+- `sender.csv` - Sender behavior data (204 participants)
+- `receiver.csv` - Receiver/judge behavior data
+- `trials.csv` - Trial-level data
+- `raw.csv` - Original raw experimental data
+
+### Dependencies
+- `requirements.txt` - Python package requirements
+- `.gitignore` - Git exclusions (excludes venv/, etc.)
 
 ### Generated Outputs
 
-#### Human Experiment
-- `figure2_replication.png` - Main bias distributions (Figure 2 replication)
+#### Human Experiment Analysis
+- `figure2_replication.png` - Core bias distributions (Figure 2 replication)
+- `truth_recovery_analysis.png` - Truth recovery scatter plots showing R² values
+- `individual_sender_judge_correlation.png` - Individual-level correlation with confidence ellipses
 
-#### Computational Models
-- `sender_L1_deceptive.png` - L1 deceptive sender behavior heatmap
-- `sender_L1_cooperative.png` - L1 cooperative sender behavior heatmap  
-- `judge_L2.png` - L2 judge inference behavior heatmap
-- `truth_L2.png` - L2 truth recovery performance heatmap
-- `parameter_sensitivity.png` - Parameter sensitivity analysis
-- `population_dynamics.png` - Population dynamics with mixed agents
+#### Computational Simulations
+- `level_k_evolution_grid.png` - Complete L0-L4 evolution for cooperative & deceptive agents
+- `enhanced_parameter_sensitivity.png` - Bias vs cost parameter analysis
+- `population_dynamics.png` - Mixed population adaptation dynamics
 
 ## Quick Start
 
 ### Prerequisites
 ```bash
-pip install pandas matplotlib numpy scipy
+pip install -r requirements.txt
+```
+
+Or manually install:
+```bash
+pip install pandas==2.1.3 matplotlib==3.8.2 numpy==1.25.2 scipy==1.11.4
 ```
 
 ### Run Complete Replication
@@ -82,7 +93,8 @@ python computational_simulations.py
 - **Strategic lying**: Senders bias messages toward their assigned goals
 - **Cost effects**: Linear cost → larger biases than quadratic cost
 - **Strategic correction**: Judges correct bias in opposite direction
-- **Individual correlation**: Strong negative relationship (r = -0.710)
+- **Individual correlation**: Strong negative relationship (r ≈ -0.71)
+- **Truth recovery**: High accuracy despite systematic deception
 - **Statistical significance**: All effects p < 0.0001
 
 ### Theoretical Predictions ✅
@@ -98,7 +110,7 @@ python computational_simulations.py
 - **Language**: Python (pandas, matplotlib, scipy)
 - **Sample**: 204 participants, ~20,000 trials
 - **Design**: 2×2 (cost: linear/quadratic × goal: over/under estimation)
-- **Analysis**: Bias calculations, t-tests, correlations
+- **Analysis**: Bias calculations, t-tests, correlations, truth recovery
 
 ### Computational Modeling
 - **Framework**: Level-k reasoning with recursive strategic thinking
@@ -151,13 +163,32 @@ P_J(kest|ksay) ∝ exp(α × E[U_J])              # Judge decision (Eq. 5)
 All key statistics from original paper successfully replicated:
 - Mean biases by condition (within 0.01 units)
 - Significance levels (all p < 0.0001)  
-- Individual correlation coefficient (r = -0.710)
+- Individual correlation coefficient (r ≈ -0.71)
+- Truth recovery R² values across conditions
 
 ### Computational Verification
 Theoretical predictions confirmed through independent implementation:
 - Level-k reasoning convergence
 - Parameter sensitivity patterns
 - Population dynamics behavior
+
+## Installation and Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/batuhansolmaz/InferringTruth-Replication-Study.git
+cd InferringTruth-Replication-Study
+
+# Create virtual environment (recommended)
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run complete replication
+python run_complete_replication.py
+```
 
 ## Citation
 
@@ -178,17 +209,33 @@ If you use this replication in your research, please cite both the original pape
 ## Repository Structure
 
 ```
-InferringTruth/
-├── README.md                           # This file
-├── comprehensive_analysis.py           # Human experiment analysis
-├── computational_simulations.py        # Agent-based modeling
-├── run_complete_replication.py         # Master replication script
-├── Exp/
-│   └── analysis/
-│       ├── sender.csv                  # Sender behavior data
-│       └── receiver.csv                # Receiver behavior data
-└── [Generated visualizations]          # PNG output files
+InferringTruth-Replication-Study/
+├── README.md                               # This file
+├── requirements.txt                        # Python dependencies
+├── .gitignore                             # Git exclusions
+├── comprehensive_analysis.py               # Human experiment analysis
+├── computational_simulations.py            # Agent-based modeling
+├── run_complete_replication.py             # Master replication script
+├── sender.csv                             # Sender behavior data
+├── receiver.csv                           # Receiver behavior data  
+├── trials.csv                             # Trial-level data
+├── raw.csv                                # Raw experimental data
+└── [Generated visualizations]              # PNG output files
 ```
+
+## Generated Visualizations
+
+After running the replication, you will get 6 key visualizations:
+
+**Human Experiment Analysis:**
+- `figure2_replication.png` - Core bias distributions
+- `truth_recovery_analysis.png` - Truth recovery scatter plots  
+- `individual_sender_judge_correlation.png` - Individual correlation analysis
+
+**Computational Simulations:**
+- `level_k_evolution_grid.png` - Level-k reasoning evolution
+- `enhanced_parameter_sensitivity.png` - Parameter sensitivity analysis
+- `population_dynamics.png` - Population dynamics
 
 ## License
 
@@ -196,8 +243,4 @@ This replication study is provided for academic and research purposes. Please re
 
 ## Contact
 
-For questions about this replication, please contact [your contact information].
-
----
-
-**Note**: This is an independent replication for educational purposes. For the official research findings, please refer to the original Oey & Vul (2024) publication.
+For questions about this replication, please open an issue on GitHub.
