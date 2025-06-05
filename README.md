@@ -12,7 +12,7 @@ This repository contains a complete replication of Oey & Vul (2024), including b
 
 - **Authors**: Lauren Oey, Edward Vul
 - **Journal**: Computational Brain & Behavior (2024)
-- **DOI**: [10.1007/s42113-024-00190-y](https://doi.org/10.1007/s42113-024-00190-y)
+- **DOI**: [10.1007/s42113-023-00187-0](https://doi.org/10.1007/s42113-023-00187-0)
 
 ## Replication Structure
 
